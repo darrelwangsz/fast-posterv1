@@ -25,7 +25,7 @@ def fetchImg(url=''):
                 return Image.open(f'data/{url}').convert('RGBA')
             else:
                 return NO_IMG
-        r = requests.get(url, timeout=0.2)
+        r = requests.get(url, timeout=5)
         return Image.open(BytesIO(r.content)).convert('RGBA')
     except urllib3.exceptions.ReadTimeoutError:
         print(f'ERROR: fetch image timeout: url={url}')
